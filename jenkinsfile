@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master', credentialsId: 'centos8', url: 'git@github.com:waseemabushagor/automating-devops-project.git'
+                git branch: 'main', credentialsId: 'centos8', url: 'git@github.com:waseemabushagor/automating-devops-project.git'
             }
         }
     
@@ -19,10 +19,10 @@ pipeline {
                 script {
                     if (params.Action == "apply") {
                         sh 'terraform init terraform/static-site'
-                        sh 'terraform apply -var "name=hello" -var "group=web" -var "region=us-east-1" -var "profile=scottyfullstack" --auto-approve terraform/static-site'
+                        sh 'terraform apply -var "name=project_instance" -var "group=project_group" -var "region=us-east-1" -var "profile=tutorial_user" --auto-approve terraform/static-site'
                     }
                     else {
-                        sh 'terraform destroy -var "name=hello" -var "group=web" -var "region=us-east-1" -var "profile=scottyfullstack" --auto-approve terraform/static-site'
+                        sh 'terraform destroy -var "name=project_instance" -var "group=project_group" -var "region=us-east-1" -var "profile=tutorial_user" --auto-approve terraform/static-site
                     }
                 }
             }
