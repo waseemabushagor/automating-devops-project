@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master', credentialsId: 'centos8', url: 'git@github.com:waseemabushagor/nginx-jenkins-ansible-terraform.git'
+                git branch: 'master', credentialsId: 'centos8', url: 'git@github.com:waseemabushagor/automating-devops-project.git'
             }
         }
     
