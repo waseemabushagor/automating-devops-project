@@ -3,7 +3,7 @@ pipeline {
     parameters {
         choice(
             name: 'Action',
-            choices: "apply\ndestroy",
+            choices: "Apply\nDestroy",
             description: 'Apply or Destroy Instance'
         )
     }
@@ -17,7 +17,7 @@ pipeline {
         stage('Terraform') {
             steps {
                 script {
-                    if (params.Action == "apply") {
+                    if (params.Action == "Apply") {
                         sh 'terraform init terraform/static-site'
                         sh 'terraform apply -var "name=project_instance" -var "group=project_group" -var "region=us-east-1" -var "profile=tutorial_user" --auto-approve terraform/static-site'
                     }
